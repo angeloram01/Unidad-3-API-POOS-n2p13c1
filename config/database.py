@@ -48,12 +48,28 @@ class Database:
                     FOREIGN KEY(id_departamento) REFERENCES departamento(id_departamento) ON DELETE SET NULL
                 )
             """)
+
+                        # Tabla Receta (Persistencia local de fármacos consultados por API)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS receta (
+                    id_receta INTEGER PRIMARY KEY AUTOINCREMENT,
+                    rut_paciente TEXT NOT NULL,
+                    nombre_medicamento TEXT NOT NULL,
+                    principio_activo TEXT,
+                    dosis TEXT NOT NULL,
+                    indicaciones TEXT,
+                    fecha_emision TEXT NOT NULL,
+                    FOREIGN KEY(rut_paciente) REFERENCES paciente(rut) ON DELETE CASCADE
+                )
+            """)
             
             conn.commit()
         except sqlite3.Error as e:
             print(f"Error al inicializar la base de datos: {e}")
         finally:
             conn.close()
+
+            
 
 if __name__ == "__main__":
     db = Database()
