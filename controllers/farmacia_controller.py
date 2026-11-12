@@ -34,7 +34,11 @@ class FarmaciaController:
 
     def consultar_medicamentos(self) -> None:
         termino = self.view.pedir_termino_busqueda()
+
         if not termino:
+            self.view.mostrar_error(
+                "Debe ingresar el nombre de un medicamento."
+            )
             return
         try:
             medicamentos, estado = self.service.buscar_medicamentos(termino)
