@@ -13,6 +13,7 @@ class MainView:
         print("2.- Gestión de Departamentos")
         print("3.- Farmacia y Recetas Médicas (Consumo API U3)")
         print("4.- Gestión de Usuarios (Credenciales Encriptadas)")
+        print("5.- Consultar Clima (API Open-Meteo)")
         print("9.- Cerrar Sesión (Cambiar de Usuario)")
         print("0.- Salir del Sistema")
         print("=" * 55)
